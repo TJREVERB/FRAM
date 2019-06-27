@@ -1,6 +1,8 @@
 import time
 import spidev
 
+WREN = 0x06
+WRITE = 0x02
 spi = spidev.SpiDev()
 
 #Only have SPI Bus 0 available on RPI
@@ -12,8 +14,8 @@ device = 1
 #Opens connection with specific bus and device
 spi.open(bus, device)
 
-spi.max_speed_hz = 500000
+spi.max_speed_hz = 31200000
 spi.mode=0
 
-writeByte = [0x02, 0x00]
-spi.xfer(writeByte)
+spi.xfer([WREN])
+spi.xfer([WRITE, 0x01, 0x06])
