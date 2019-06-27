@@ -27,3 +27,5 @@ def read_from_fram(address, num_bytes):
         
 if __name__ == "__main__":
     start()
+    write_to_fram(0x01, 0x23)
+    read_from_fram(0x01, 1)
